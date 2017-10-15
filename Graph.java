@@ -10,7 +10,7 @@ public class Graph {
 	private Vertice[] matrix = new Vertice[100];
 	public Graph(String text) {
 		for (int i = 0;i < 100;i++)
-			matrix[i] = new Vertice();
+			matrix[i] = new Vertice();on branch B2
 		String word1 = "",word2 = "";
 		int i = 0,j;
 		while (i < text.length()){

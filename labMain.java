@@ -10,7 +10,7 @@ public class labMain {
 		Scanner console = new Scanner(System.in);
 		filePath = console.nextLine();
 		//console.close();
-		//System.out.println(filePath);
+		//System.out.println(filePath);on branch B2
 		File f = new File(filePath);
 		try {
 			Scanner input = new Scanner(f);
@@ -49,7 +49,7 @@ public class labMain {
 			if (order == 2)
 				gh.showGraph();
 			else if (order == 3) {
-				
+
 				System.out.println("输入第一个单词：");
 				w1 = console.next();
 				System.out.println("输入第二个单词：");
@@ -57,7 +57,7 @@ public class labMain {
 				gh.queryBridgeWords(w1, w2);
 			}
 			else if (order == 4) {
-				
+
 				System.out.print("输入一串文本：");
 				newText = console.nextLine();
 				newText = console.nextLine();
@@ -83,6 +83,6 @@ public class labMain {
 			order = console.nextInt();
 		}
 		console.close();
-	}	
+	}
 
 }

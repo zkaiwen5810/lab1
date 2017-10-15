@@ -12,7 +12,7 @@ public class Vertice {
 		next = 0;
 		ajen = null;
 		weight = 0;
-		d = 10000000;
+		d = 10000000;on branch B2
 		pi = null;
 	}
 	public Vertice(Vertice v) {
