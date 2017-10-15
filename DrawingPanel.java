@@ -1,7 +1,7 @@
 package lab1;
-//first update
+//first update C4 branch
 /*
- * =====================================================================
+ * ===================================================================
  * DrawingPanel.java
  * Simplified Java drawing window class
  * to accompany Building Java Programs textbook and associated materials

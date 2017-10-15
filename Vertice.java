@@ -1,5 +1,5 @@
 package lab1;
-//first update
+//first update on branch C4
 public class Vertice {
 	private String word;
 	private Vertice next,ajen;
