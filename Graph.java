@@ -154,14 +154,18 @@ public class Graph {
 	public String queryBridgeWords(String word1, String word2) {
 		Vertice word1Node =  search(word1);
 		Vertice word2Node =  search(word2);
+<<<<<<< HEAD
 		//Vertice word1Node = matrix[Math.abs(word1.hashCode())%100];first change on branch B1
+=======
+		//Vertice word1Node = matrix[Math.abs(word1.hashCode())%100];first change On branch c4
+>>>>>>> C4
 
 		Vertice AjenOfWord1 = word1Node,temp,midNode;
 		Vertice[] Words  = new Vertice[20];
 		int Wordscot=0,i;
 		while (AjenOfWord1 != null) {
 			midNode =search( AjenOfWord1.getWord());
-			//midNode = matrix[Math.abs(AjenOfWord1.getWord().hashCode())%100];
+
 			temp = midNode;
 			while (temp != null && !temp.getWord().equals(word2))
 				temp = temp.getAjen();

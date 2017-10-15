@@ -1,8 +1,13 @@
 package lab1;
 import java.util.*;
 import java.io.*;
+<<<<<<< HEAD
 
 //on branch B1
+=======
+////import java.awt.*;
+//on branch C4
+>>>>>>> C4
 public class labMain {
 	public static void main(String[] args) {
 		String filePath,text = "",finalTxt = "";
