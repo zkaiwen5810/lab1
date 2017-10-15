@@ -7,7 +7,7 @@ import java.util.*;
 
 public class Graph {
 	private int numOfNodes;
-	private Vertice[] matrix = new Vertice[100]; 
+	private Vertice[] matrix = new Vertice[100];
 	public Graph(String text) {
 		for (int i = 0;i < 100;i++)
 			matrix[i] = new Vertice();
@@ -58,7 +58,7 @@ public class Graph {
 		return temp;
 	}
 	public int getNumOfNodes() {
-		return this.numOfNodes; 
+		return this.numOfNodes;
 	}
 	public void showGraph() {
 		final int orignalX = 400;
@@ -73,7 +73,7 @@ public class Graph {
 		for (int i = 0;i < num;i++) {
 			x = (int)((orignalX-R)*Math.cos((Math.toRadians(dDeg*i))))+orignalX;
 			y = (int)((orignalX-R)*Math.sin((Math.toRadians(dDeg*i))))+orignalY;
-			
+
 			Vertice ajenVer = find(i).getAjen();
 			while (ajenVer != null) {
 				int x2 = (int)((orignalX-R)*Math.cos(Math.toRadians(dDeg*ajenVer.getRank())))+orignalX;
@@ -103,9 +103,9 @@ public class Graph {
 			g.setColor(Color.BLACK);
 			g.setFont(new Font("Monosapced",Font.BOLD,TextHeight));
 			g.drawString(find(i).getWord(), x-TextHeight-10, y+TextHeight/2);
-	
+
 		}
-		
+
 	}
 	private void printArow(Graphics gr,int x1,int y1,int x2,int y2,int R) {
 		int dx = x1-x2,dy = y1-y2;
@@ -136,7 +136,7 @@ public class Graph {
 		}
 		gr.drawLine(arowX, arowY, endX1, endY1);
 		gr.drawLine(arowX, arowY, endX2, endY2);
-		
+
 	}
 	private Vertice find(int i) {
 		for (int ii = 0;ii < 100;ii++) {
@@ -154,8 +154,8 @@ public class Graph {
 	public String queryBridgeWords(String word1, String word2) {
 		Vertice word1Node =  search(word1);
 		Vertice word2Node =  search(word2);
-		//Vertice word1Node = matrix[Math.abs(word1.hashCode())%100];
-		//Vertice word2Node = matrix[Math.abs(word2.hashCode())%100];
+		//Vertice word1Node = matrix[Math.abs(word1.hashCode())%100];first change
+
 		Vertice AjenOfWord1 = word1Node,temp,midNode;
 		Vertice[] Words  = new Vertice[20];
 		int Wordscot=0,i;
@@ -165,16 +165,16 @@ public class Graph {
 			temp = midNode;
 			while (temp != null && !temp.getWord().equals(word2))
 				temp = temp.getAjen();
-			
-			
+
+
 			if(temp!=null && midNode!=word1Node && midNode!=word2Node) {
 			 	 Words[Wordscot]= midNode;
 			 	 Wordscot++;
-				
+
 			}
 			AjenOfWord1 = AjenOfWord1.getAjen();
 		}
-		
+
 
 		if(Wordscot==0) {
 			System.out.print("no bridge words from "+word1+" to "+word2+"\n");
@@ -194,19 +194,19 @@ public class Graph {
 	}
 
 public String generateNewText(String inputText) {
-		
-		String word1="",word2="";	
+
+		String word1="",word2="";
 		Vertice AjenOfWord1,word1Node,word2Node,temp,midNode;
 		int i,j;
-		
+
 		int[][] TheBridge = new int[150][150];
-		
+
 		for(i=0;i<100;i++) {
 			for(j=0;j<100;j++) {
 				if(matrix[i].getWord()!="" && matrix[j].getWord()!=""  ) {
 					word1 = matrix[i].getWord();
 					word2 = matrix[j].getWord();
-					
+
 					word1Node = matrix[Math.abs(word1.hashCode())%100];
 					word2Node = matrix[Math.abs(word2.hashCode())%100];
 					AjenOfWord1 = word1Node;
@@ -215,20 +215,20 @@ public String generateNewText(String inputText) {
 						midNode = matrix[Math.abs(AjenOfWord1.getWord().hashCode())%100];
 						temp = midNode;
 						while (temp != null && !temp.getWord().equals(word2))
-							temp = temp.getAjen();			
+							temp = temp.getAjen();
 						if(temp!=null && midNode!=word1Node && midNode!=word2Node) {                    //放桥接词节点在数组中的下标
 							TheBridge[Math.abs(word1.hashCode())%100][Math.abs(word2.hashCode())%100] = Math.abs(midNode.getWord().hashCode())%100;
 						}
 						AjenOfWord1 = AjenOfWord1.getAjen();
 					}
-					
+
 				}
 			}
 		}
 		int bridgeNodeNum;
 		String[] words = new String [100];
 		words = inputText.split(" ");
-		
+
 		System.out.print("\n"+words[0]+" ");
 		for(i=0;i<words.length-1;i++) {
 			bridgeNodeNum = TheBridge[Math.abs(words[i].hashCode())%100][Math.abs(words[i+1].hashCode())%100];
@@ -239,7 +239,7 @@ public String generateNewText(String inputText) {
 		}
 
 		System.out.print("\n");
-				
+
 		return "end!";
 	}
 	private Vertice nextRank(Vertice v) {
@@ -275,9 +275,9 @@ public String generateNewText(String inputText) {
 			return "time->servitization->becomes->one->of->this->word";
 		Vertice word1Node = search(word1);
 		Vertice word2Node = search(word2);
-		
+
 		Vertice tempAjen;
-		
+
 		int i,j,v,sum;
 		int [][]minLength = new int [100][100];
 		int [] father  = new int[100];
@@ -285,7 +285,7 @@ public String generateNewText(String inputText) {
 		int [] visited = new int[100];
 		int word1Rank = word1Node.getRank();
 		int word2Rank = word2Node.getRank();
-		
+
 		for(i=0;i<100;i++) {
 			for(j=0;j<100;j++) {
 				if(i!=j) {
@@ -293,7 +293,7 @@ public String generateNewText(String inputText) {
 				}
 			}
 		}
-		
+
 		for(i=0;i<100;i++) {
 			if(matrix[i].getWord()!="") {
 				tempAjen = matrix[i].getAjen();
@@ -306,17 +306,17 @@ public String generateNewText(String inputText) {
 		min = 999;
 		visited[word1Rank] = 1;
 		nextRank = 0;
-		
+
 
 		for(j=0;j<100;j++) {
 			for(i=0;i<100;i++) {
 				if(minLength[word1Rank][i]<min && visited[i]==0 && find(i).getWord()!=""&&i!=word1Rank) {          // i 是下一个点
 					min = minLength[word1Rank][i];
 					nextRank = i;
-					
+
 				}
-				
-			}               
+
+			}
 			min = 999;
 			visited[nextRank] = 1;
 			for(v=0;v<100;v++) {
@@ -337,7 +337,7 @@ public String generateNewText(String inputText) {
 			stop = temp;
 		}
 		System.out.print(word1+"\n");
-			
+
 		return word2;
 	}
 
@@ -400,14 +400,14 @@ public String generateNewText(String inputText) {
 		}
 	}
 	public String randomWalk() {
-		
+
         int max=99;
         int min=0;
         int AjenCots=0;
         int randomNum;
         Vertice tempAjen,nextNode;
         int [][] visited = new int[100][100];
-        
+
         Random random = new Random();
         int nodeNum = random.nextInt(max)%(max-min+1) + min;
         while(matrix[nodeNum].getWord()=="") {
@@ -415,7 +415,7 @@ public String generateNewText(String inputText) {
         }
         Vertice tempNode = matrix[nodeNum];
         System.out.print(tempNode.getWord()+" ");
-        
+
         while(tempNode!=null && tempNode.getAjen()!=null) {
         	AjenCots = 0;
         	tempAjen = tempNode.getAjen();
@@ -426,7 +426,7 @@ public String generateNewText(String inputText) {
         	max = AjenCots;
         	min = 1;
         	randomNum = random.nextInt(max)%(max-min+1) + min;
-     
+
         	tempAjen = tempNode.getAjen();
         	AjenCots = 1;
         	if(tempAjen==null) {
@@ -437,9 +437,9 @@ public String generateNewText(String inputText) {
         		AjenCots++;
         		tempAjen = tempAjen.getAjen();
         	}
-        	
+
 ////////////////加用户询问
-        	/*Scanner sc = new Scanner(System.in 
+        	/*Scanner sc = new Scanner(System.in
 
 );
             System.out.println("\n输入1停止，其他继续输出:");
@@ -448,7 +448,7 @@ public String generateNewText(String inputText) {
             if(judge==1) {
             	return "end";
             }*/
-        	
+
         	nextNode =  search(tempAjen.getWord());
         	System.out.print(nextNode.getWord()+" ");
         	if(visited[Math.abs(tempNode.getWord().hashCode())%100][Math.abs(nextNode.getWord().hashCode())%100]==1) {
@@ -458,7 +458,7 @@ public String generateNewText(String inputText) {
         	else {
         	    visited[Math.abs(tempNode.getWord().hashCode())%100][Math.abs(nextNode.getWord().hashCode())%100]=1;
         	}
-        	
+
         	tempNode = nextNode;
         }
         System.out.print("\n\n随机游走结束\n");

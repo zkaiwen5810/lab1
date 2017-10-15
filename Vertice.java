@@ -1,5 +1,5 @@
 package lab1;
-
+//first update
 public class Vertice {
 	private String word;
 	private Vertice next,ajen;
@@ -9,7 +9,7 @@ public class Vertice {
 	private Vertice pi;
 	public Vertice() {
 		word = "";
-		next = null;
+		next = 0;
 		ajen = null;
 		weight = 0;
 		d = 10000000;
