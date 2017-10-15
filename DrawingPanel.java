@@ -1,5 +1,5 @@
 package lab1;
-//first update
+//first update on branch B1
 /*
  * =====================================================================
  * DrawingPanel.java

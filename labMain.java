@@ -1,8 +1,8 @@
 package lab1;
 import java.util.*;
 import java.io.*;
-//import java.awt.*;
 
+//on branch B1
 public class labMain {
 	public static void main(String[] args) {
 		String filePath,text = "",finalTxt = "";
@@ -49,7 +49,7 @@ public class labMain {
 			if (order == 2)
 				gh.showGraph();
 			else if (order == 3) {
-				
+
 				System.out.println("输入第一个单词：");
 				w1 = console.next();
 				System.out.println("输入第二个单词：");
@@ -57,7 +57,7 @@ public class labMain {
 				gh.queryBridgeWords(w1, w2);
 			}
 			else if (order == 4) {
-				
+
 				System.out.print("输入一串文本：");
 				newText = console.nextLine();
 				newText = console.nextLine();
@@ -83,6 +83,6 @@ public class labMain {
 			order = console.nextInt();
 		}
 		console.close();
-	}	
+	}
 
 }
