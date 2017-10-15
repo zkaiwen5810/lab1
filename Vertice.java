@@ -1,5 +1,9 @@
 package lab1;
-//first update
+<<<<<<< HEAD
+//first update ON BRANCH B1
+=======
+//first update on branch C4
+>>>>>>> C4
 public class Vertice {
 	private String word;
 	private Vertice next,ajen;

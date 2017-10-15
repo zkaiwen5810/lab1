@@ -1,7 +1,11 @@
 package lab1;
-//first update
+<<<<<<< HEAD
+//first update on branch B1
+=======
+//first update C4 branch
+>>>>>>> C4
 /*
- * =====================================================================
+ * ===================================================================
  * DrawingPanel.java
  * Simplified Java drawing window class
  * to accompany Building Java Programs textbook and associated materials
