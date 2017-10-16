@@ -1,5 +1,5 @@
 package lab1;
-
+//change of c4 vertice.java
 public class Vertice {
 	private String word;
 	private Vertice next,ajen;

@@ -5,6 +5,7 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.util.*;
 //change things in graph.java
+//change of c4 in graphjava
 public class Graph {
 	private int numOfNodes;
 	private Vertice[] matrix = new Vertice[100]; 
