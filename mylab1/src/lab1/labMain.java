@@ -2,7 +2,7 @@ package lab1;
 import java.util.*;
 import java.io.*;
 //import java.awt.*;
-
+//change things in labmain.java
 public class labMain {
 	public static void main(String[] args) {
 		String filePath,text = "",finalTxt = "";
