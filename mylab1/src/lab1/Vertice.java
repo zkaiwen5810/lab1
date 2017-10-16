@@ -1,5 +1,5 @@
 package lab1;
-
+//change of b1 verticejava
 public class Vertice {
 	private String word;
 	private Vertice next,ajen;
