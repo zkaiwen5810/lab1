@@ -1,6 +1,6 @@
 package lab1;
 <<<<<<< HEAD
-//first update ON BRANCH B1
+
 =======
 //first update on branch C4
 >>>>>>> C4

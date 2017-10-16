@@ -1,20 +1,16 @@
 package lab1;
 import java.util.*;
 import java.io.*;
-<<<<<<< HEAD
 
-//on branch B1
-=======
-////import java.awt.*;
-//on branch C4
->>>>>>> C4
+
+
 public class labMain {
 	public static void main(String[] args) {
 		String filePath,text = "",finalTxt = "";
 		System.out.println("Please input the file path:");
 		Scanner console = new Scanner(System.in);
 		filePath = console.nextLine();
-		//console.close();
+		//console.close();cahnge
 		//System.out.println(filePath);on branch B2
 		File f = new File(filePath);
 		try {

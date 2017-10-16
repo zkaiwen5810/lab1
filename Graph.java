@@ -85,7 +85,7 @@ public class Graph {
 				g.fillOval(midX, midY, rad, rad);
 				g.drawOval(midX, midY, rad, rad);
 				g.setColor(Color.BLACK);
-				//(ajenVer.getWeight(), midX, midY);
+
 				g.drawLine(x,y,x2, y2);
 				printArow(g,x,y,x2,y2,R);
 				g.setFont(new Font("Monosapced",Font.BOLD,TextHeight));
