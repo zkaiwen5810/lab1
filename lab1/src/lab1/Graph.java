@@ -1,6 +1,6 @@
 package lab1;
 
-import java.awt.Color;
+import java.awt.Color;//»Àπ§review
 import java.awt.Font;
 import java.awt.Graphics;
 import java.util.*;

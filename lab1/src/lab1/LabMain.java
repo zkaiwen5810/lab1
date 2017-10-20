@@ -3,7 +3,7 @@ import java.util.*;
 import java.io.*;
 //import java.awt.*;
 
-public class LabMain {
+public class LabMain {//»Àπ§review
 	public static void main(String[] args) {
 		String filePath,text = "",finalTxt = "";
 		System.out.println("Please input the file path:");

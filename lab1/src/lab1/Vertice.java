@@ -2,7 +2,7 @@ package lab1;
 //first update
 
 public class Vertice {
-	private String word;
+	private String word;//»Àπ§review
 	private Vertice next=null,ajen;
 	private int weight;
 	private int rank;

@@ -2,7 +2,7 @@ package lab1;
 //first update
 /*
  * =====================================================================
- * DrawingPanel.java
+ * DrawingPanel.java//»Àπ§review
  * Simplified Java drawing window class
  * to accompany Building Java Programs textbook and associated materials
  * =====================================================================
