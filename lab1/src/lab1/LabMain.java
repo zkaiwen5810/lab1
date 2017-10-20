@@ -4,7 +4,7 @@ import java.io.*;
 //import java.awt.*;
 
 public class LabMain {//人工review
-	public static void main(String[] args) {
+	public static void main(String[] args) {//工具review
 		String filePath,text = "",finalTxt = "";
 		System.out.println("Please input the file path:");
 		Scanner console = new Scanner(System.in);

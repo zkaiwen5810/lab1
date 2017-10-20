@@ -5,7 +5,7 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.util.*;
 
-public class Graph {
+public class Graph {//¹¤¾ßreview
     private int numOfNodes;
     private Vertice[] matrix = new Vertice[100];
 	public Graph(String text) {

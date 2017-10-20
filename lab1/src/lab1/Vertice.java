@@ -11,7 +11,7 @@ public class Vertice {
 	public Vertice() {
 		word = "";
 		ajen = null;
-		weight = 0;
+		weight = 0;//¹¤¾ßreview
 		d = 10000000;
 		pitemp = null;
 	}
