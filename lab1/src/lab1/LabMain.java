@@ -3,7 +3,7 @@ import java.util.*;
 import java.io.*;
 //import java.awt.*;
 
-public class labMain {
+public class LabMain {
 	public static void main(String[] args) {
 		String filePath,text = "",finalTxt = "";
 		System.out.println("Please input the file path:");
@@ -12,6 +12,18 @@ public class labMain {
 		//console.close();
 		//System.out.println(filePath);
 		File f = new File(filePath);
+	    if (f.exists() && f.isFile()) {
+			  System.out.println("file exists");
+	    } else {
+			  System.out.println("file doesn't exist,or this is not a file.");
+			  System.exit(0);
+	    try {
+			  f.createNewFile();
+	    } catch(IOException e) {
+			  // TODO Auto-generated catch block
+			  e.printStackTrace();
+	     } 
+			}
 		try {
 			Scanner input = new Scanner(f);
 			while (input.hasNextLine()) {
@@ -21,9 +33,9 @@ public class labMain {
 		}catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
-		System.out.println(text);
+	
 		text = text.toLowerCase();
-		System.out.println(text);
+
 		for (int i = 0;i < text.length();i++) {
 			if (text.charAt(i) < 'a' || text.charAt(i) > 'z') {
 				finalTxt += " ";
@@ -31,7 +43,7 @@ public class labMain {
 				finalTxt += text.charAt(i);
 			}
 		}
-		System.out.println(finalTxt);
+
 		Graph gh = new Graph(finalTxt);
 		gh.printAjen();
 		System.out.println(gh.getNumOfNodes());
@@ -40,12 +52,25 @@ public class labMain {
 		System.out.println("4：根据桥接词生成新文本");
 		System.out.println("5：计算最短路径");
 		System.out.println("6：随机游走");
+		System.out.println("0：退出程序");
 		System.out.println("请输入指令数字：");
 		String w1,w2;
 		String newText;
-		int order = console.nextInt();
-
-		while (order !=0) {
+		String quest;
+		char ch;
+		int order;
+		while (true) {
+			quest = console.next();
+	        ch=quest.charAt(0);
+	        order=0;
+	        if (Character.isDigit(ch)){
+	        	order=(int)ch-48;
+	        }
+	        else{
+	        	System.out.println("请输入正确选项：");
+	        	continue;
+	        }
+	        System.out.println(order);
 			if (order == 2)
 				gh.showGraph();
 			else if (order == 3) {
@@ -74,15 +99,19 @@ public class labMain {
 			}
 			else if(order == 6)
 				gh.randomWalk();
+			else if(order==0)
+				System.exit(0);
+			else
+				System.out.println("请输入正确选项：");
 			System.out.println("2:展示有向图");
 			System.out.println("3：查询桥接词");
 			System.out.println("4：根据桥接词生成新文本");
 			System.out.println("5：计算最短路径");
 			System.out.println("6：随机游走");
+			System.out.println("0：退出程序");
 			System.out.println("请输入指令数字：");
-			order = console.nextInt();
+				
 		}
-		console.close();
 	}	
 
 }

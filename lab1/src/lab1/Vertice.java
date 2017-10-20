@@ -1,19 +1,19 @@
 package lab1;
 //first update
+
 public class Vertice {
 	private String word;
-	private Vertice next,ajen;
+	private Vertice next=null,ajen;
 	private int weight;
 	private int rank;
 	private int d;
-	private Vertice pi;
+	private Vertice pitemp;
 	public Vertice() {
 		word = "";
-		next = 0;
 		ajen = null;
 		weight = 0;
 		d = 10000000;
-		pi = null;
+		pitemp = null;
 	}
 	public Vertice(Vertice v) {
 		this.word = v.getWord();
@@ -44,7 +44,7 @@ public class Vertice {
 		return this.d;
 	}
 	public Vertice getPi() {
-		return this.pi;
+		return this.pitemp;
 	}
 	public void setWord(String word) {
 		this.word = word;
@@ -55,7 +55,7 @@ public class Vertice {
 	public void setAjen(Vertice ajen) {
 		this.ajen = ajen;
 	}
-	public void setWeight(int weight) {
+	public void setWeight(final int weight) {
 		this.weight = weight;
 	}
 	public void setRank(int rank) {
@@ -65,6 +65,6 @@ public class Vertice {
 		this.d = d;
 	}
 	public void setPi(Vertice pi) {
-		this.pi = pi;
+		this.pitemp = pi;
 	}
 }
