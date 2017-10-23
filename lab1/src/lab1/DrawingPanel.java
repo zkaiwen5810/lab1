@@ -2,12 +2,12 @@ package lab1;
 //first update
 /*
  * =====================================================================
- * DrawingPanel.java
+ * DrawingPanel.java//人工review
  * Simplified Java drawing window class
  * to accompany Building Java Programs textbook and associated materials
  * =====================================================================
  *
- *
+ *//工具review
  * author: Stuart Reges, University of Washington
  * version: 2016/03/07 (BJP 4th edition)
  *
@@ -22,6 +22,7 @@ package lab1;
  * the Graphics object, setting the background color if they so choose.
  * See JavaDoc comments below for more information.
  */
+
 
 import java.awt.FontMetrics;
 import java.awt.Rectangle;
@@ -198,7 +199,8 @@ public final class DrawingPanel implements ImageObserver {
     private static final Color GRID_LINE_COLOR      = new Color(64, 64, 64, 128);
     private static final Object LOCK                = new Object();
 
-    private static final boolean SAVE_SCALED_IMAGES = true;    // if true, when panel is zoomed, saves images at that zoom factor
+    // if true, when panel is zoomed, saves images at that zoom factor
+    private static final boolean SAVE_SCALED_IMAGES = true;    
     private static final int DELAY                  = 100;     // delay between repaints in millis
     private static final int GRID_SIZE              = 10;      // 10px between grid lines
     private static final int MAX_FRAMES             = 100;     // max animation frames
@@ -229,7 +231,7 @@ public final class DrawingPanel implements ImageObserver {
     // static variables
     private static boolean DEBUG = false;
     private static int instances = 0;
-    private static Thread shutdownThread = null;
+    private static Thread sdThread = null;
 
     // static class initializer - sets up thread to close program if
     // last DrawingPanel is closed
@@ -430,9 +432,9 @@ public final class DrawingPanel implements ImageObserver {
             instances++;
             instanceNumber = instances;  // each DrawingPanel stores its own int number
 
-            if (shutdownThread == null && !usingDrJava()) {
+            if (sdThread == null && !usingDrJava()) {
                 if (DEBUG) System.out.println("DrawingPanel(): starting idle thread");
-                shutdownThread = new Thread(new Runnable() {
+                sdThread = new Thread(new Runnable() {
                     // Runnable implementation; used for shutdown thread.
                     public void run() {
                         boolean save = shouldSave();
@@ -458,8 +460,8 @@ public final class DrawingPanel implements ImageObserver {
                     }
                 });
                 // shutdownThread.setPriority(Thread.MIN_PRIORITY);
-                shutdownThread.setName("DrawingPanel-shutdown");
-                shutdownThread.start();
+                sdThread.setName("DrawingPanel-shutdown");
+                sdThread.start();
             }
         }
 
@@ -700,7 +702,7 @@ public final class DrawingPanel implements ImageObserver {
                 String line = input.nextLine().trim();
                 if (line.length() == 0) { continue; }
 
-                if (line.startsWith("#")) {
+                if (line.charAt(0)==('#')) {
                     // a comment
                     if (line.endsWith(":")) {
                         // category label
@@ -1008,7 +1010,7 @@ public final class DrawingPanel implements ImageObserver {
      */
     public Image loadImage(String filename) {
         if (!(new File(filename)).exists()) {
-            throw new RuntimeException("DrawingPanel.loadImage: File not found: " + filename);
+            throw new IllegalArgumentException();
         }
         Image img = Toolkit.getDefaultToolkit().getImage(filename);
         MediaTracker mt = new MediaTracker(imagePanel);
@@ -1344,10 +1346,11 @@ public final class DrawingPanel implements ImageObserver {
      * Sets the text that will appear in the drawing panel's bottom status bar.
      */
     private void setStatusBarText(String text) {
+    	String texttemp=text;
         if (currentZoom != 1) {
-            text += " (current zoom: " + currentZoom + "x" + ")";
+            texttemp += " (current zoom: " + currentZoom + "x" + ")";
         }
-        statusBar.setText(text);
+        statusBar.setText(texttemp);
     }
 
     /*
@@ -2085,7 +2088,7 @@ public final class DrawingPanel implements ImageObserver {
         private int numDiffPixels;
         private int opacity = 50;
         private String label1Text = "Expected";
-        private String label2Text = "Actual";
+        private final String label2Text = "Actual";
         private boolean highlightDiffs = false;
 
         private Color highlightColor = new Color(224, 0, 224);
@@ -2266,7 +2269,7 @@ public final class DrawingPanel implements ImageObserver {
         }
 
         // called when "Set Image 1" menu item is clicked
-        public void setImage1() {
+        final public void setImage1() {
             checkChooser();
             if (chooser.showSaveDialog(frame) != JFileChooser.APPROVE_OPTION) {
                 return;
@@ -2287,7 +2290,7 @@ public final class DrawingPanel implements ImageObserver {
         // sets image 1 to be the given image
         public void setImage1(BufferedImage image) {
             if (image == null) {
-                throw new NullPointerException();
+                throw new IllegalArgumentException();
             }
 
             image1 = image;
@@ -3226,11 +3229,11 @@ public final class DrawingPanel implements ImageObserver {
                 throw new IOException(
                         "RGB frames require palette autodetection");
 
-            int[] argb_pixels = (int[]) dgf.getPixelSource();
+            int[] argbpixels = (int[]) dgf.getPixelSource();
             byte[] ci_pixels = dgf.getPixelSink();
-            int npixels = argb_pixels.length;
+            int npixels = argbpixels.length;
             for (int i = 0; i < npixels; ++i) {
-                int argb = argb_pixels[i];
+                int argb = argbpixels[i];
 
                 // handle transparency
                 if ((argb >>> 24) < 0x80) // transparent pixel?
@@ -3751,7 +3754,7 @@ public final class DrawingPanel implements ImageObserver {
         int g_init_bits;
 
         int ClearCode;
-        int EOFCode;
+        int eofCode;
 
         void compress(int init_bits, OutputStream outs) throws IOException {
             int fcode;
@@ -3771,10 +3774,10 @@ public final class DrawingPanel implements ImageObserver {
             maxcode = MAXCODE(n_bits);
 
             ClearCode = 1 << (init_bits - 1);
-            EOFCode = ClearCode + 1;
+            eofCode = ClearCode + 1;
             free_ent = ClearCode + 2;
 
-            char_init();
+            charinit();
 
             ent = nextPixel();
 
@@ -3820,7 +3823,7 @@ public final class DrawingPanel implements ImageObserver {
             }
             // Put out the final code.
             output(ent, outs);
-            output(EOFCode, outs);
+            output(eofCode, outs);
         }
 
         // output
@@ -3876,7 +3879,7 @@ public final class DrawingPanel implements ImageObserver {
                 }
             }
 
-            if (code == EOFCode) {
+            if (code == eofCode) {
                 // At EOF, write the rest of the buffer.
                 while (cur_bits > 0) {
                     char_out((byte) (cur_accum & 0xff), outs);
@@ -3911,7 +3914,7 @@ public final class DrawingPanel implements ImageObserver {
         int a_count;
 
         // Set up the 'byte output' routine
-        void char_init() {
+        void charinit() {
             a_count = 0;
         }
 
